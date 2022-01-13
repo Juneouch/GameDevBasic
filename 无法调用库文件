@@ -1,0 +1,20 @@
+Step 1:
+Close Visual Studio
+
+Step 2:
+In Unity, go to Edit < Preferences < External Tools (left part of the Window)
+
+Step 3:
+In External Tools go to the part that says External Script Editor (this should be on which ever Visual Studio editor you are using (for me it defaulted to "Open by File Extension"
+
+Step 4:
+Make sure Generate all csproj files is checked, and Editor Attaching is checked
+
+Step 5:
+Open the C# script you were trying to open earlier
+
+Hope this Helps
+
+Currently using
+- Unity 2019.3.3f1 Personal
+- Visual Studio 2019
