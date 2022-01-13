@@ -1,0 +1,95 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
+namespace UnityEngine.XR.ARFoundation.Samples
+{
+    public class UIManager : MonoBehaviour
+    {
+        [Header("*Button Audio")]
+        [SerializeField] AudioSource audioSource;
+        [SerializeField]
+        AudioClip[] audio;
+
+        [Header("*Mute Button")]
+        [SerializeField]
+        Image audioimage;
+        [SerializeField]
+        Sprite mute;
+        [SerializeField]
+        Sprite play;
+
+       [Header("*3DModel")]
+        [SerializeField]
+        PlaceOnPlane ARSpawner;
+
+        
+
+        [Header("*Info")]
+        [SerializeField]
+        GameObject InfoPlane;
+        [SerializeField]
+        Image infoImage;
+        [SerializeField]
+        Sprite[] plantsInfo;
+        
+        
+        void Start()
+        {
+            audioSource.clip = audio[0];
+            audioSource.Play();
+            InfoPlane.SetActive(false);
+        }
+
+        void Update()
+        {
+
+        }
+        public void Plant01()
+        {
+            Debug.Log("P01");
+            audioSource.clip = audio[1];
+            audioSource.Play();
+            infoImage.sprite = plantsInfo[0];
+
+            ARSpawner.spawnedObject.transform.GetChild(0).gameObject.SetActive(true);
+            ARSpawner.spawnedObject.transform.GetChild(1).gameObject.SetActive(false);
+            ARSpawner.spawnedObject.transform.GetChild(2).gameObject.SetActive(false);
+            ARSpawner.spawnedObject.transform.GetChild(3).gameObject.SetActive(false);
+            ARSpawner.spawnedObject.transform.GetChild(4).gameObject.SetActive(false);
+            ARSpawner.spawnedObject.transform.GetChild(5).gameObject.SetActive(false);
+        }
+
+       //Audio mute button 
+        bool isAudioPlay = true;
+        public void AudioOnandOff()
+        {
+            if (isAudioPlay == false)
+            {
+                audioSource.Play();
+                isAudioPlay = true;
+                audioimage.sprite = play;
+            }
+            else if (isAudioPlay == true)
+            {
+                audioSource.Pause();
+                isAudioPlay = false;
+                audioimage.sprite = mute;
+            }
+        }
+        //Info Button
+        public void InfoOnandOff()
+        {
+            if (InfoPlane.activeInHierarchy==true)
+            {
+                InfoPlane.SetActive(false);
+            }
+            else if (InfoPlane.activeInHierarchy==false)
+            {
+                InfoPlane.SetActive(true);
+            }
+        }
+    }
+}
