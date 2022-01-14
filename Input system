@@ -1,0 +1,9 @@
+  鼠标点击：
+  Input.GetMouseButtonDown(0)           //鼠标左键按下
+  Input.GetMouseButtonDown(1)           //鼠标右键按下
+  Input.GetMouseButtonUp(0)             //鼠标左键抬起
+  Input.GetMouseButtonUp(1)             //鼠标右键抬起
+  
+  键盘事件：
+  Input.GetKeyDown(KeyCode.键值)    //键盘按下
+  Input.GetKeyUp(KeyCode.键值)         //键盘抬起
