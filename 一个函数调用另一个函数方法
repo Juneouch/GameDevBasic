@@ -1,0 +1,10 @@
+ //先实例化
+ Astroroid astroroid = collision.GetComponent<Astroroid>();
+        if (astroroid == null)
+            return;
+
+        astroroid.TakeDamage(25f);
+
+        Destroy(gameObject);
+
+        Instantiate(Explosioneffct, transform.position, transform.rotation);
