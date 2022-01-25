@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+public class Fade : MonoBehaviour
+{
+//Require Component Canvas Group
+    public CanvasGroup canvasGroup;
+   public void FadeOutMe()
+  {
+      StartCoroutine(DoFadeOut());
+  }
+
+  IEnumerator DoFadeOut()
+  {
+      while (canvasGroup.alpha>0)
+      {
+          canvasGroup.alpha -= Time.deltaTime/2;
+          yield return null;
+      }
+      canvasGroup.interactable = false;
+      yield return null;
+  }
+
+    public void FadeInMe()
+    {
+        StartCoroutine(DoFadeIn());
+    }
+
+    IEnumerator DoFadeIn()
+    {
+        while (canvasGroup.alpha ==0)
+        {
+            canvasGroup.alpha += Time.deltaTime / 2;
+            yield return null;
+        }
+        canvasGroup.interactable = false;
+        yield return null;
+    }
+
+}
+// To call this method:
+// public Fade fade;
+//fade.FadeInMe
