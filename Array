@@ -1,9 +1,0 @@
-//usually when you see new, the date allocated in heap;
-int[] array= new int[4];
-for(int )
-
-//Multidimensional Arrays
-int[,] new int[2,2];
-int x=a[0,1];
-
-//Jagged Arrays-- Arrays of arrays

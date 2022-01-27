@@ -1,0 +1,27 @@
+//usually when you see new, the date allocated in heap;
+int[] array= new int[4];
+for(int )
+
+//Multidimensional Arrays
+int[,] new int[2,2];
+int x=a[0,1];
+
+//Jagged Arrays-- Arrays of arrays
+int[][] a= new int[2][];
+a[0]=new int[3];
+a[1]=new int[2];
+
+//Lists are extension of array
+// the lists contain size and item. 
+//it's slow
+List<int> list= new List<int>();
+//how are lists are build
+
+//Stack&Queue
+//HashSet- Adding 
+//Dictionnary
+Dictionary<int,enemy> dict=new Dictionary<int,Enemy>();
+
+//
+List<Enemy> enemiesHit=Enemies
+.Where(enemy=>Distance(enemy,bomb)<10f)
