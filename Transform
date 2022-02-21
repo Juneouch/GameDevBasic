@@ -1,3 +1,5 @@
+    --------------------------------
+    Convert transform
     public Vector3 destination;
 
     Vector3 point;
@@ -20,4 +22,35 @@
         // Transforms destination's direction from local space to world space.
         direction = transform.TransformDirection(destination);
 
+    }
+    --------------------------------------------------
+    public class ModifierTransform : MonoBehaviour
+{
+    public Transform targettransform;
+    public Vector3 orbit;
+    void Start()
+    {
+        transform.Translate(Vector3.forward);
+        //Move forward as the targettransform object--Z axis
+        transform.Translate(Vector3.forward, targettransform);
+
+        //Set position and rotation at once
+        //If the syntex required a quternion, use quaternion.Euler to convert
+        transform.SetPositionAndRotation(new Vector3(1f, 2f, 3f), Quaternion.Euler(Vector3.forward));
+        //Brutally set the position to the specific place;
+
+        //Rotation
+        transform.Rotate(new Vector3(10f, 20f, 30f));
+        transform.Rotate(Vector3.forward, 45f);
+
+        //Orbit 
+        //The object rotation use a vector as it's rotate center
+        transform.RotateAround(orbit, Vector3.up, 90f);
+
+        //LookAt
+        transform.LookAt(targettransform);
+        transform.LookAt(targettransform, Vector3.right);
+
+        //Check for change
+        Debug.Log("The object has changed" + transform.hasChanged);
     }
