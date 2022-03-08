@@ -12,3 +12,26 @@ Transform.ect
 yield return new WaitForseconds(1f);
 // do more stuff after one sceond;
 }
+
+------------------------
+Wait for one frame
+
+IEnumerator WaitsOneFrame()
+{
+// do stuff
+yield return null;
+//do stuff
+yield return null;
+//do stuff
+}
+
+-------------------------------
+//Wait Until a condition
+//Create a bool condition
+Private bool [layerScoreCompare()
+{
+return playerScore>100
+}
+
+IEnumerator WaitUntil True(){
+ yield return new WaitUnitil(（=》PlayerScoreCompare());
