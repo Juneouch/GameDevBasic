@@ -1,0 +1,12 @@
+// 一个用来在调用时可以延时的方法
+private void Start(){
+StartCoroutine("MethodName")
+StartCoroutine(MethodName())
+
+}
+IEnumerator MethodName(){
+//Do stuff
+Transform.ect
+yield return new WaitForseconds(1f);
+// do more stuff after one sceond;
+}
