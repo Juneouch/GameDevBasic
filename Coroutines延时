@@ -1,7 +1,8 @@
 // 一个用来在调用时可以延时的方法
 private void Start(){
-StartCoroutine("MethodName")
-StartCoroutine(MethodName())
+StartCoroutine("MethodName");
+StartCoroutine(MethodName());
+StopCoroutine(MethodName());
 
 }
 IEnumerator MethodName(){
