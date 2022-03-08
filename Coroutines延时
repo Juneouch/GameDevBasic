@@ -3,6 +3,7 @@ private void Start(){
 StartCoroutine("MethodName");
 StartCoroutine(MethodName());
 StopCoroutine(MethodName());
+StopAllCoroutine();
 
 }
 IEnumerator MethodName(){
