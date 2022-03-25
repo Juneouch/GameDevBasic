@@ -1,0 +1,5 @@
+public animator anima;
+
+anima = GetComponent<Animation>();
+
+public void SetBool(string name, bool value);
