@@ -3,6 +3,8 @@ using Cinemachine;
 // Should have a impulse source attached
  public CinemachineImpulseSource Impulse;
  
+ //cINEMACHINE INDEPENDENT IMPULSE COMPONENT SHOULD BE ATTACHED TO THE CAMERA
+ 
  Impulse= GameObject.Find("Something").GetComponent<CinemachineImpulseSource>();
  
  //In some situation
