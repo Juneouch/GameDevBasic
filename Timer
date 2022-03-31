@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using System;
+
+public class SimpleTimer : MonoBehaviour
+{
+    [SerializeField] float targeTime;
+    [SerializeField] float counter;
+    public float displayCounter;
+    [SerializeField] TextMeshProUGUI timerText;
+   
+    void Start()
+    {
+        counter = targeTime;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+      if(targeTime >= counter && counter >= 0)
+        {
+            counter -= Time.deltaTime;
+        }
+        //displayCounter = Mathf.RoundToInt(counter);
+        int timeRemaining = (int)Math.Ceiling(counter);
+        timerText.text = string.Format("{0}:{1:00}", timeRemaining / 60, timeRemaining % 60);
+
+    }
