@@ -1,0 +1,167 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+//The script should be attched to Camera
+
+public class Interactable : MonoBehaviour
+{
+    
+    [Range(0,10)]
+    public float maxDistance=5f;
+    public float pickupForce=100f;
+
+    public LayerMask interactabLayer;
+    public Transform hand;
+    private Rigidbody heldObjRB;
+    private GameObject holdingObj;
+
+    [Header("Sound")]
+    public AudioSource Audio;
+    void Start()
+    {
+        
+    }
+    void Update()
+    {
+        RaycastHit hitInfo;
+        bool isHit = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, maxDistance, interactabLayer);
+        //RaycastHit save info of cast collider
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (holdingObj == null)
+            {
+                if (isHit)
+                {
+                    PickUpObject(hitInfo.transform.gameObject);
+                    Audio.Play();
+                }
+            }
+            else
+            {
+                DropObject();
+            }
+        }
+        if (holdingObj!=null)
+        {
+            MoveObject();
+        }     
+    }
+    private void PickUpObject(GameObject pickedObj)
+    {
+        if (pickedObj.GetComponent<Rigidbody>())
+        {
+            heldObjRB = pickedObj.GetComponent<Rigidbody>();
+            heldObjRB.useGravity = false;
+            heldObjRB.drag = 10f;
+            heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;//Controls whether physics will change the rotation of the object.
+
+            heldObjRB.transform.parent = hand;
+            holdingObj = pickedObj;
+        }
+
+    }
+    private void MoveObject()
+    {
+        if (Vector3.Distance(holdingObj.transform.position, hand.position) > 0.1f)
+        {
+            Vector3 moveDirection = (hand.position - holdingObj.transform.position);
+            heldObjRB.AddForce(moveDirection * pickupForce);
+        }
+    }
+
+    private void DropObject()
+    {
+
+        heldObjRB.useGravity = true;
+        heldObjRB.drag = 1f;
+        heldObjRB.constraints = RigidbodyConstraints.None;//Controls whether physics will change the rotation of the object.
+
+        heldObjRB.transform.parent = null;
+        holdingObj = null;
+    }
+
+}
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Interactable : MonoBehaviour
+{
+    
+    [Range(0,10)]
+    public float maxDistance=5f;
+    public float pickupForce=100f;
+
+    public LayerMask interactabLayer;
+    public Transform hand;
+    private Rigidbody heldObjRB;
+    private GameObject holdingObj;
+
+    [Header("Sound")]
+    public AudioSource Audio;
+    void Start()
+    {
+        
+    }
+    void Update()
+    {
+        RaycastHit hitInfo;
+        bool isHit = Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, maxDistance, interactabLayer);
+        //RaycastHit save info of cast collider
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (holdingObj == null)
+            {
+                if (isHit)
+                {
+                    PickUpObject(hitInfo.transform.gameObject);
+                    Audio.Play();
+                }
+            }
+            else
+            {
+                DropObject();
+            }
+        }
+        if (holdingObj!=null)
+        {
+            MoveObject();
+        }     
+    }
+    private void PickUpObject(GameObject pickedObj)
+    {
+        if (pickedObj.GetComponent<Rigidbody>())
+        {
+            heldObjRB = pickedObj.GetComponent<Rigidbody>();
+            heldObjRB.useGravity = false;
+            heldObjRB.drag = 10f;
+            heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;//Controls whether physics will change the rotation of the object.
+
+            heldObjRB.transform.parent = hand;
+            holdingObj = pickedObj;
+        }
+
+    }
+    private void MoveObject()
+    {
+        if (Vector3.Distance(holdingObj.transform.position, hand.position) > 0.1f)
+        {
+            Vector3 moveDirection = (hand.position - holdingObj.transform.position);
+            heldObjRB.AddForce(moveDirection * pickupForce);
+        }
+    }
+
+    private void DropObject()
+    {
+
+        heldObjRB.useGravity = true;
+        heldObjRB.drag = 1f;
+        heldObjRB.constraints = RigidbodyConstraints.None;//Controls whether physics will change the rotation of the object.
+
+        heldObjRB.transform.parent = null;
+        holdingObj = null;
+    }
+
+}
